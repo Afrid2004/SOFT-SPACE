@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#061d2a" />
+    <meta
+      name="description"
+      content="Soft Space is building thoughtful digital experiences and software solutions. Something good is taking shape."
+    />
+
+    <title>Soft Space — Coming Soon</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#061d2a",
+              lime: "#9CFF1E",
+              "soft-white": "#F2F8F7",
+              muted: "#A4BEC3",
+            },
+            fontFamily: {
+              sans: ["DM Sans", "sans-serif"],
+              heading: ["Manrope", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #061d2a;
+        --accent: #9cff1e;
+        --text: #f2f8f7;
+        --muted: #a4bec3;
+        --border: rgba(255, 255, 255, 0.1);
+        --panel: rgba(255, 255, 255, 0.035);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 90px;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+        background:
+          radial-gradient(
+            ellipse at 12% 12%,
+            rgba(22, 116, 115, 0.16),
+            transparent 36%
+          ),
+          radial-gradient(
+            ellipse at 88% 35%,
+            rgba(25, 109, 126, 0.11),
+            transparent 34%
+          ),
+          linear-gradient(145deg, #061d2a 0%, #082632 48%, #061b28 100%);
+        color: var(--text);
+        font-family: "DM Sans", sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      .brand-name {
+        font-family: "Manrope", sans-serif;
+      }
+
+      ::selection {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 4px;
+      }
+
+      .grid-pattern {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+          );
+        background-size: 48px 48px;
+        -webkit-mask-image: linear-gradient(to bottom, black, transparent 90%);
+        mask-image: linear-gradient(to bottom, black, transparent 90%);
+      }
+
+      .ambient-glow {
+        background: radial-gradient(
+          circle,
+          rgba(45, 212, 191, 0.12) 0%,
+          rgba(34, 211, 238, 0.045) 40%,
+          transparent 72%
+        );
+        filter: blur(8px);
+      }
+
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .soft-card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        transition:
+          border-color 0.25s ease,
+          background-color 0.25s ease,
+          transform 0.25s ease;
+      }
+
+      .soft-card:hover {
+        border-color: rgba(156, 255, 30, 0.35);
+        background: rgba(255, 255, 255, 0.05);
+        transform: translateY(-3px);
+      }
+
+      .lime-button {
+        background: var(--accent);
+        color: var(--bg);
+        transition:
+          background-color 0.2s ease,
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .lime-button:hover {
+        background: #b2ff56;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(156, 255, 30, 0.12);
+      }
+
+      .outline-button {
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        transition:
+          border-color 0.2s ease,
+          background-color 0.2s ease;
+      }
+
+      .outline-button:hover {
+        border-color: rgba(156, 255, 30, 0.4);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .accent-text {
+        color: var(--accent);
+      }
+
+      .muted-text {
+        color: var(--muted);
+      }
+
+      .status-dot {
+        position: relative;
+        display: inline-flex;
+        width: 8px;
+        height: 8px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      .status-dot::after {
+        position: absolute;
+        inset: -4px;
+        border: 1px solid rgba(156, 255, 30, 0.45);
+        border-radius: 50%;
+        content: "";
+        animation: pulse 2s ease-out infinite;
+      }
+
+      .reveal {
+        animation: fade-up 0.75s ease both;
+      }
+
+      .reveal-delay-1 {
+        animation-delay: 0.12s;
+      }
+
+      .reveal-delay-2 {
+        animation-delay: 0.24s;
+      }
+
+      .reveal-delay-3 {
+        animation-delay: 0.36s;
+      }
+
+      .float-card {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .float-card-delay {
+        animation: float 6s ease-in-out 1.5s infinite;
+      }
+
+      @keyframes fade-up {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-7px);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 0.7;
+          transform: scale(0.8);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1.8);
+        }
+      }
+
+      .section-divider {
+        border-color: rgba(255, 255, 255, 0.09);
+      }
+
+      .logo-mark {
+        fill: var(--accent);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="font-sans antialiased text-soft-white">
+    <!-- Skip link -->
+    <a
+      href="#main"
+      class="sr-only fixed left-4 top-4 z-50 rounded-lg bg-lime px-4 py-3 font-semibold text-navy focus:not-sr-only"
+    >
+      Skip to content
+    </a>
+
+    <!-- Header -->
+    <header class="relative z-20 border-b section-divider">
+      <nav
+        class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-12"
+        aria-label="Main navigation"
+      >
+        <a
+          href="#top"
+          class="inline-flex items-center gap-3 rounded-sm"
+          aria-label="Soft Space home"
+        >
+          <svg
+            viewBox="0 0 40 40"
+            class="h-9 w-9 shrink-0"
+            role="img"
+            aria-label="Soft Space geometric logo"
+          >
+            <rect x="1" y="1" width="17" height="17" rx="3" class="logo-mark" />
+            <path d="M22 1h3c7.7 0 14 6.3 14 14v3H22V1Z" class="logo-mark" />
+            <path d="M1 22h3c7.7 0 14 6.3 14 14v3H1V22Z" class="logo-mark" />
+            <rect
+              x="22"
+              y="22"
+              width="17"
+              height="17"
+              rx="3"
+              class="logo-mark"
+            />
+          </svg>
+
+          <span class="brand-name text-lg font-extrabold tracking-tight">
+            soft<span class="accent-text">space</span>
+          </span>
+        </a>
+
+        <div class="hidden items-center gap-2 text-sm muted-text md:flex">
+          <span class="h-1.5 w-1.5 rounded-full bg-lime"></span>
+          Building Something Better
+        </div>
+
+        <div
+          class="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.025] px-3.5 py-2 text-xs font-medium text-slate-200 sm:px-4 sm:text-sm"
+        >
+          <span class="status-dot" aria-hidden="true"></span>
+          Coming Soon
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section id="top" class="relative isolate overflow-hidden">
+        <div
+          class="grid-pattern pointer-events-none absolute inset-0 -z-10"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="ambient-glow pointer-events-none absolute -right-40 top-20 -z-10 h-[500px] w-[500px]"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="mx-auto grid min-h-[690px] max-w-7xl items-center gap-16 px-5 py-20 sm:px-8 md:min-h-[720px] md:grid-cols-[1.1fr_.9fr] md:py-24 lg:px-12 lg:py-28"
+        >
+          <!-- Hero content -->
+          <div class="max-w-3xl reveal">
+            <div
+              class="mb-8 inline-flex items-center gap-2.5 rounded-full border border-lime/20 bg-lime/[0.055] px-4 py-2 text-[10px] font-semibold tracking-[0.16em] text-lime sm:text-xs"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-lime"></span>
+              A NEW DIGITAL EXPERIENCE IS IN THE WORKS
+            </div>
+
+            <h1
+              class="brand-name max-w-3xl text-5xl font-extrabold leading-[1.06] tracking-[-0.055em] sm:text-6xl lg:text-7xl xl:text-[5.3rem]"
+            >
+              Ideas Into
+              <br />
+              <span class="accent-text">Digital Reality.</span>
+            </h1>
+
+            <p class="mt-7 max-w-xl text-base leading-8 muted-text sm:text-lg">
+              Soft Space is building thoughtful digital experiences and software
+              solutions to help businesses grow. We’re working behind the scenes
+              and will be sharing more soon.
+            </p>
+
+            <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href="#contact"
+                class="lime-button inline-flex min-h-12 items-center justify-center gap-3 rounded-lg px-6 py-3 text-sm font-bold"
+              >
+                Connect With Us
+
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  class="h-4 w-4"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 10h12M10 4l6 6-6 6"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/company/softspaceltd"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="outline-button inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold text-soft-white"
+              >
+                Explore Our LinkedIn
+
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  class="h-4 w-4"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M11 3h6v6h-1.8V6.07l-7.3 7.3-1.27-1.27 7.3-7.3H11V3ZM5 5h4v1.8H5.8v7.4h7.4V11H15v5H4V5h1Z"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <div class="mt-12 flex items-center gap-3 text-xs muted-text">
+              <span class="h-px w-9 bg-lime/70"></span>
+              A little more clarity. A lot more possibility.
+            </div>
+          </div>
+
+          <!-- Visual showcase -->
+          <div
+            class="relative mx-auto w-full max-w-md reveal reveal-delay-2 md:max-w-none"
+            aria-label="Soft Space design showcase"
+          >
+            <div
+              class="ambient-glow pointer-events-none absolute -inset-12 rounded-full"
+              aria-hidden="true"
+            ></div>
+
+            <div
+              class="glass-panel relative rounded-[2rem] p-5 shadow-2xl shadow-black/20 sm:p-8"
+            >
+              <div
+                class="mb-8 flex items-center justify-between border-b border-white/10 pb-4"
+              >
+                <span class="text-xs font-semibold tracking-wide muted-text">
+                  SOFT SPACE / 001
+                </span>
+
+                <span class="flex gap-1.5" aria-hidden="true">
+                  <i class="h-1.5 w-1.5 rounded-full bg-white/20"></i>
+                  <i class="h-1.5 w-1.5 rounded-full bg-white/20"></i>
+                  <i class="h-1.5 w-1.5 rounded-full bg-lime"></i>
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                <!-- Tile 01 -->
+                <div
+                  class="float-card aspect-square rounded-2xl bg-lime p-4 sm:p-5"
+                >
+                  <div class="flex h-full flex-col justify-between">
+                    <span
+                      class="text-xs font-bold tracking-widest text-navy/60"
+                    >
+                      01
+                    </span>
+
+                    <div
+                      class="h-8 w-8 rounded-lg border-2 border-navy/70"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- Tile 02 -->
+                <div
+                  class="float-card-delay aspect-square overflow-hidden rounded-2xl bg-[#0b3040] p-4 sm:p-5"
+                >
+                  <div class="flex h-full flex-col justify-between">
+                    <span
+                      class="text-xs font-bold tracking-widest text-slate-400"
+                    >
+                      02
+                    </span>
+
+                    <svg
+                      viewBox="0 0 100 100"
+                      class="w-full max-w-[112px] self-end"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M10 90V10h14c36 0 66 30 66 66v14H10Z"
+                        stroke="#9CFF1E"
+                        stroke-width="8"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Tile 03 -->
+                <div
+                  class="float-card-delay aspect-square overflow-hidden rounded-2xl bg-[#0b3040] p-4 sm:p-5"
+                >
+                  <div class="flex h-full flex-col justify-between">
+                    <span
+                      class="text-xs font-bold tracking-widest text-slate-400"
+                    >
+                      03
+                    </span>
+
+                    <svg
+                      viewBox="0 0 100 100"
+                      class="w-full max-w-[112px]"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M10 10h14c36 0 66 30 66 66v14H10V10Z"
+                        stroke="#9CFF1E"
+                        stroke-width="8"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Tile 04 -->
+                <div
+                  class="float-card aspect-square rounded-2xl border border-white/10 bg-white/[0.025] p-4 sm:p-5"
+                >
+                  <div class="flex h-full flex-col justify-between">
+                    <span
+                      class="text-xs font-bold tracking-widest text-slate-400"
+                    >
+                      04
+                    </span>
+
+                    <div class="flex items-end gap-1.5">
+                      <span class="h-5 w-2 rounded-sm bg-lime/40"></span>
+                      <span class="h-9 w-2 rounded-sm bg-lime/60"></span>
+                      <span class="h-7 w-2 rounded-sm bg-lime/80"></span>
+                      <span class="h-12 w-2 rounded-sm bg-lime"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 flex items-center justify-between gap-3">
+                <span class="text-sm font-semibold text-white">
+                  Making room for better ideas.
+                </span>
+                <span class="shrink-0 text-xs muted-text">In progress</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Beliefs -->
+      <section id="beliefs" class="border-y section-divider bg-[#051c28]/70">
+        <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-12 lg:py-24">
+          <div
+            class="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end"
+          >
+            <div>
+              <p class="text-xs font-bold tracking-[0.2em] accent-text">
+                WHAT WE BELIEVE
+              </p>
+
+              <h2
+                class="brand-name mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl"
+              >
+                Good work starts with good thinking.
+              </h2>
+            </div>
+
+            <p class="max-w-md text-sm leading-7 muted-text">
+              The principles guiding how we approach ideas, technology, and the
+              people who use what we build.
+            </p>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-3">
+            <!-- Card 01 -->
+            <article class="soft-card rounded-2xl p-6 sm:p-8">
+              <span
+                class="flex h-11 w-11 items-center justify-center rounded-xl bg-lime/10 accent-text"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  class="h-5 w-5"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 3 4 7v5c0 5 3.4 7.8 8 9 4.6-1.2 8-4 8-9V7l-8-4Z"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="m8.5 12 2.2 2.2 4.8-5"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+
+              <h3 class="brand-name mt-6 text-lg font-bold">
+                Thoughtful Development
+              </h3>
+
+              <p class="mt-3 text-sm leading-7 muted-text">
+                Building with purpose, usability, and quality in mind.
+              </p>
+            </article>
+
+            <!-- Card 02 -->
+            <article class="soft-card rounded-2xl p-6 sm:p-8">
+              <span
+                class="flex h-11 w-11 items-center justify-center rounded-xl bg-lime/10 accent-text"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  class="h-5 w-5"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 3 4 12h6l-1 9 11-12h-7l-1-6Z"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+
+              <h3 class="brand-name mt-6 text-lg font-bold">
+                Modern Technology
+              </h3>
+
+              <p class="mt-3 text-sm leading-7 muted-text">
+                Using the right tools to create practical digital solutions.
+              </p>
+            </article>
+
+            <!-- Card 03 -->
+            <article class="soft-card rounded-2xl p-6 sm:p-8">
+              <span
+                class="flex h-11 w-11 items-center justify-center rounded-xl bg-lime/10 accent-text"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  class="h-5 w-5"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M16 20v-1.5a4.5 4.5 0 0 0-4.5-4.5h-3A4.5 4.5 0 0 0 4 18.5V20M10 10a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM16 3.5a3.5 3.5 0 0 1 0 6.8M17 14h1.5a3.5 3.5 0 0 1 3.5 3.5V20"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <h3 class="brand-name mt-6 text-lg font-bold">People First</h3>
+
+              <p class="mt-3 text-sm leading-7 muted-text">
+                Keeping real users and real business needs at the center.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Coming soon -->
+      <section class="relative overflow-hidden">
+        <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+          <div
+            class="glass-panel relative overflow-hidden rounded-3xl px-6 py-12 sm:px-10 sm:py-16 lg:px-16"
+          >
+            <div
+              class="pointer-events-none absolute -right-12 -top-20 h-64 w-64 rounded-full border border-lime/15 sm:-right-5 sm:h-80 sm:w-80"
+              aria-hidden="true"
+            ></div>
+
+            <div
+              class="pointer-events-none absolute -right-2 -top-10 h-48 w-48 rounded-full border border-lime/10 sm:h-64 sm:w-64"
+              aria-hidden="true"
+            ></div>
+
+            <div
+              class="ambient-glow pointer-events-none absolute -right-10 bottom-0 h-64 w-64"
+              aria-hidden="true"
+            ></div>
+
+            <div class="relative max-w-2xl">
+              <p class="text-xs font-bold tracking-[0.2em] accent-text">
+                CURRENTLY IN THE WORKS
+              </p>
+
+              <h2
+                class="brand-name mt-5 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl"
+              >
+                Something Good Is
+                <br class="hidden sm:block" />
+                Taking Shape.
+              </h2>
+
+              <p
+                class="mt-5 max-w-xl text-sm leading-7 muted-text sm:text-base"
+              >
+                Our website is under development while we put the right pieces
+                in place. We’re taking the time to make it useful, clear, and
+                worth coming back to.
+              </p>
+
+              <div
+                class="mt-8 flex max-w-sm items-center gap-3"
+                role="img"
+                aria-label="Work in progress"
+              >
+                <span class="h-2 flex-1 rounded-full bg-lime"></span>
+                <span class="h-2 flex-1 rounded-full bg-lime/60"></span>
+                <span class="h-2 flex-1 rounded-full bg-lime/25"></span>
+                <span class="h-2 flex-1 rounded-full bg-white/10"></span>
+                <span class="h-2 flex-1 rounded-full bg-white/10"></span>
+                <span class="ml-1 shrink-0 text-xs muted-text"
+                  >In progress</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="border-t section-divider bg-[#051c28]/70">
+        <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-12 lg:py-24">
+          <div class="grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:gap-20">
+            <!-- Contact intro -->
+            <div>
+              <p class="text-xs font-bold tracking-[0.2em] accent-text">
+                LET’S CONNECT
+              </p>
+
+              <h2
+                class="brand-name mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl"
+              >
+                Have a thought to share?
+              </h2>
+
+              <p class="mt-5 max-w-md text-sm leading-7 muted-text">
+                We’d be glad to hear from you. Reach out through any of the
+                channels below.
+              </p>
+
+              <a
+                href="mailto:softspaceltd@gmail.com"
+                class="mt-8 inline-flex items-center gap-3 rounded-lg text-sm font-bold accent-text transition-colors hover:text-white"
+              >
+                softspaceltd@gmail.com
+
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  class="h-4 w-4"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 10h12M10 4l6 6-6 6"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <!-- Contact links -->
+            <div class="grid gap-3 sm:grid-cols-2">
+              <!-- GitHub -->
+              <a
+                href="https://github.com/Afrid2004"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="soft-card flex items-center justify-between rounded-xl p-5"
+              >
+                <span class="flex items-center gap-4">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] text-white"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="h-5 w-5"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.54v-2.1c-3.1.68-3.75-1.31-3.75-1.31-.5-1.28-1.24-1.62-1.24-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15.99 1.7 2.6 1.21 3.23.93.1-.72.39-1.21.7-1.49-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.15a10.6 10.6 0 0 1 5.55 0c2.11-1.45 3.05-1.15 3.05-1.15.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3 0 4.29-2.62 5.24-5.11 5.51.4.35.75 1.02.75 2.06v3.07c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"
+                      />
+                    </svg>
+                  </span>
+
+                  <span>
+                    <span class="block text-sm font-bold">GitHub</span>
+                    <span class="mt-1 block text-xs muted-text">
+                      Explore our code
+                    </span>
+                  </span>
+                </span>
+
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  class="h-4 w-4 shrink-0 muted-text"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M6 14 14 6M6 6h8v8"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+
+              <!-- LinkedIn -->
+              <a
+                href="https://www.linkedin.com/company/softspaceltd"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="soft-card flex items-center justify-between rounded-xl p-5"
+              >
+                <span class="flex items-center gap-4">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] text-white"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="h-5 w-5"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5.2 3.2a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2ZM3.4 9h3.7v11.6H3.4V9Zm6 0h3.5v1.6h.1c.5-.9 1.7-1.9 3.5-1.9 3.8 0 4.5 2.5 4.5 5.7v6.2h-3.7v-5.5c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9v5.6H9.4V9Z"
+                      />
+                    </svg>
+                  </span>
+
+                  <span>
+                    <span class="block text-sm font-bold">LinkedIn</span>
+                    <span class="mt-1 block text-xs muted-text">
+                      Follow our updates
+                    </span>
+                  </span>
+                </span>
+
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  class="h-4 w-4 shrink-0 muted-text"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M6 14 14 6M6 6h8v8"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+
+              <!-- Facebook -->
+              <a
+                href="https://www.facebook.com/softspaceltd/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="soft-card flex items-center justify-between rounded-xl p-5"
+              >
+                <span class="flex items-center gap-4">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] text-white"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="h-5 w-5"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.1H7v3.2h2.8V21h3.7Z"
+                      />
+                    </svg>
+                  </span>
+
+                  <span>
+                    <span class="block text-sm font-bold">Facebook</span>
+                    <span class="mt-1 block text-xs muted-text">
+                      Stay in touch
+                    </span>
+                  </span>
+                </span>
+
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  class="h-4 w-4 shrink-0 muted-text"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M6 14 14 6M6 6h8v8"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+
+              <!-- Phone -->
+              <a
+                href="tel:+8801345802911"
+                class="soft-card flex items-center justify-between rounded-xl p-5"
+              >
+                <span class="flex items-center gap-4">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] text-white"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      class="h-5 w-5"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M7 3H4.5A1.5 1.5 0 0 0 3 4.5C3 13.6 10.4 21 19.5 21a1.5 1.5 0 0 0 1.5-1.5V17l-5-2-2 2c-3.1-1.2-5.3-3.4-6.5-6.5l2-2-2-5Z"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+
+                  <span>
+                    <span class="block text-sm font-bold">Phone</span>
+                    <span class="mt-1 block text-xs muted-text">
+                      01345802911
+                    </span>
+                  </span>
+                </span>
+
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  class="h-4 w-4 shrink-0 muted-text"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M6 14 14 6M6 6h8v8"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+
+              <!-- Email -->
+              <a
+                href="mailto:softspaceltd@gmail.com"
+                class="soft-card flex items-center justify-between rounded-xl p-5 sm:col-span-2"
+              >
+                <span class="flex items-center gap-4">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] text-white"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      class="h-5 w-5"
+                      aria-hidden="true"
+                    >
+                      <rect
+                        x="3"
+                        y="5"
+                        width="18"
+                        height="14"
+                        rx="2"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                      />
+                      <path
+                        d="m4 7 8 6 8-6"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+
+                  <span>
+                    <span class="block text-sm font-bold">Email</span>
+                    <span class="mt-1 block text-xs muted-text">
+                      softspaceltd@gmail.com
+                    </span>
+                  </span>
+                </span>
+
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  class="h-4 w-4 shrink-0 muted-text"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M6 14 14 6M6 6h8v8"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t section-divider">
+      <div
+        class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-7 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12"
+      >
+        <a
+          href="#top"
+          class="inline-flex w-fit items-center gap-2.5 rounded-sm"
+          aria-label="Soft Space home"
+        >
+          <svg viewBox="0 0 40 40" class="h-7 w-7" aria-hidden="true">
+            <rect x="1" y="1" width="17" height="17" rx="3" class="logo-mark" />
+            <path d="M22 1h3c7.7 0 14 6.3 14 14v3H22V1Z" class="logo-mark" />
+            <path d="M1 22h3c7.7 0 14 6.3 14 14v3H1V22Z" class="logo-mark" />
+            <rect
+              x="22"
+              y="22"
+              width="17"
+              height="17"
+              rx="3"
+              class="logo-mark"
+            />
+          </svg>
+
+          <span class="brand-name text-sm font-extrabold tracking-tight">
+            soft<span class="accent-text">space</span>
+          </span>
+        </a>
+
+        <p class="text-xs muted-text">
+          Thoughtful ideas. Practical digital experiences.
+        </p>
+
+        <p class="text-xs muted-text">
+          © <span id="year"></span> Soft Space. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
